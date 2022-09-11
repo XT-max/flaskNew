@@ -1,11 +1,12 @@
-from flask import Flask
+from flask import Flask, render_template
+import random
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def hi():  # put application's code here
-    return 'sdfsdf!'
+def hello():
+    return f"""Привет"""
 
 
 @app.route('/petya/')
@@ -51,7 +52,7 @@ def petya():  # put application's code here
 
 @app.route('/user/<username>')
 def user_profile(username):  # put application's code here
-    return f"<h1>Здраствуй дорогой пользователь {username}</h1>"
+    return render_template('index.html',title=str(random.randint(1,4)))
 
 
 @app.route('/user/<int:post_id>')
